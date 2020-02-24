@@ -10,10 +10,14 @@ class Queue:
         # self.storage = ?
 
     def enqueue(self, value):
-        pass
+        # self.items.insert(0,value)
+        self.queue.append(item)
 
     def dequeue(self):
-        pass
+        # return self.items.pop()
+        # if len(self.queue) < 1:
+        #     return None
+        # return self.queue.pop(0)
 
     def len(self):
-        pass
+        # return len(self.queue) 
