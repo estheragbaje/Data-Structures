@@ -114,7 +114,7 @@ class BinarySearchTree:
         queue.enqueue(node)
 
         # if there is a node in the queue
-        if queue.len():
+        while len(queue) > 0:
             # dequeue the queue
             current_node = queue.dequeue()
             # print the value of the node
