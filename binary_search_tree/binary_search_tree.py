@@ -10,24 +10,86 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
+        # LEFT CASE
+        # check if our new nodes value is less than the current nodes value
+          # does it have a child to the left?
+            # place our new node here
+            # otherwise
+          # repeat process for the left
     # Insert the given value into the tree
     def insert(self, value):
         if value < self.value:
-
+          if not self.left:
+            node = BinarySearchTree(value)
+            self.left = node
+          else:
+            self.left.insert(value)
+        
+        # RIGHT CASE
+        # check if the new nodes value is greater than or equal to the current nodes value
+            # does it have a child to the right?
+                # place our new node here
+            # otherwise
+                # repeat the process for the right
+        if value >= self.value:
+          if not self.right:
+            node = BinarySearchTree(value)
+            self.right = node
+          else:
+            self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+          return True
+        
+        #LHS
+        if target < self.value:
+          if not self.left:
+            return False
+          else:
+            return self.left.contains(target)
+
+        #RHS
+        if target >= self.value:
+          if not self.right:
+            return False
+          else:
+            return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        #BASE CASE
+        # if empty tree
+        if not self:
+            return None
+        
+        # if there is no right value 
+        if not self.right:
+          # return the root node value
+            return self.value
+        else:
+          # return get max of the right hand child
+            return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        # base case run the callback passing in the selfs value
+        cb(self.value)
+        # if left exists
+        if self.left:
+          # run the for each on left
+            self.left.for_each(cb)
+        # if right exists
+        if self.right:
+          # run the for each on right
+            self.right.for_each(cb)
+
+
+   
+"""
 
     # DAY 2 Project -----------------------
 
@@ -56,3 +118,5 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+"""
