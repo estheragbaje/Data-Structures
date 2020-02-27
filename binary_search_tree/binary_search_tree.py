@@ -89,24 +89,68 @@ class BinarySearchTree:
 
 
    
-"""
+
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        #check if there is a left node:
+        if node.left is not None:
+          #stack the node to the left
+          self.stack.push(node.left)
+        #check if there is a right node:
+        if node.right is not None:
+          #stack the node to the right
+          self.stack.push(node.left)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # create the queue instance
+        queue = Queue()
+        # add the node to queue
+        queue.enqueue(node)
+
+        # if there is a node in the queue
+        if queue.len():
+            # dequeue the queue
+            current_node = queue.dequeue()
+            # print the value of the node
+            # print(current_node.value)
+
+            # if there is a left node add it to the queue
+            if current_node.left is not None:
+                queue.enqueue(current_node.left)
+
+            # if there is a right node add it to the queue
+            if current_node.right is not None:
+                queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+         # create the stack instance
+        stack = Stack()
+        # add the node to stack
+        stack.push(node)
+
+        # if there is a node in the stack
+        if stack.len():
+            # pop the stack
+            current_node = stack.pop()
+            # print the value of the node
+            # print(current_node.value)
+
+            # if there is a left node add it to the stack
+            if current_node.left is not None:
+                stack.push(current_node.left)
+
+            # if there is a right node add it to the stack
+            if current_node.right is not None:
+                stack.push(current_node.right)
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -118,5 +162,3 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
-
-"""
